@@ -98,7 +98,7 @@ class Labeler:
     def turn_on_component_highlight(self):
 
         overlay = self.image_processing.copy()
-        cv2.rectangle(overlay, self.top_left_pt, self.bottom_right_pt, (0,0,0), 1)
+        cv2.rectangle(overlay, self.top_left_pt, self.bottom_right_pt, (0,0,0), 2)
         self.image_processing = self.apply_transparency(overlay,  alpha=0.5)
 
         cv2.imshow('ImageViewer', self.image_processing)
