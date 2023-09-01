@@ -54,13 +54,15 @@ Related to image
 
 # 인덱싱이 작을 수록 우선순위가 높은 레이블 (BGR)
 colors_dominance = [
-            [0, 0, 255],    # 0:title 빨강색
-            [0, 255, 255],    # 1:icon 노란색
-            [0, 255, 0],    # 2:text 초록색
-            [255, 0, 0],  # 3:table 파랑색
-            [255, 0, 255],  # 4:image 자주색
-                            # no_label:bg 하얀색
-        ]
+                [0, 0, 255],    # 0:icon 빨강색
+                [0, 255, 255],  # 1:title 노란색
+                [0, 255, 0],    # 2:text 초록색
+                [255, 0, 0],    # 3:table 파랑색
+                [255, 0, 255],  # 4:shape 자주색
+                [255, 255, 0],  # 5:image 하늘색
+                                # no_label:bg 하얀색
+            ]
+
 
 def to_label_image(labeled_tensor):
     background = np.ones((*labeled_tensor.shape[0:2], 3)) * 255
@@ -73,4 +75,6 @@ def to_label_image(labeled_tensor):
     return background
 
 def write_label_image(labeled_image, file_name):
-    cv2.imwrite(file_name, labeled_image)
+    cv2.imwrite(file_name+".jpg", labeled_image)
+
+    
